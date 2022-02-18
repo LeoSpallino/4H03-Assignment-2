@@ -9,6 +9,7 @@ function [t, p, R2] = eigen_decomp(A, N)
         
     p = fliplr(eigvectors); % flipping the matrix so that it's in right order
     p = p(:,1:N);   % returning only columns 1 to N vectors
+
     t = A*p;
     
     % Need to flip the eigenvalue matrix so that it's in the right order

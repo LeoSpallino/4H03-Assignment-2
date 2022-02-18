@@ -29,8 +29,9 @@ T(:, [8,9]) = [];
 
 % Building the PCA model by Eigenvalue Decomposition
 % ----------------------------------------------------------------------- %
-[t, p, R2] = eigen_decomp(T,3);
+[t, p, R2] = eigen_decomp(T,2);
 
 colNames = string(T_copy.Properties.VariableNames(:, [1:7,10:14]));
 loading_plot(p(:,1),1, colNames);
 loading_plot(p(:,2),2, colNames);
+scoreplot(t(:,1),t(:,2));

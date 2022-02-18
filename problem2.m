@@ -1,8 +1,8 @@
 % The first three important lines:
 % ----------------------------------------------------------------------- %
-clear variables
-close all
-clc
+clear variables;
+close all;
+clc;
 % ----------------------------------------------------------------------- %
 
 % Reading in data
@@ -16,27 +16,23 @@ T(:,1) = [];
 % saving a copy of the table to use the column names later
 T_copy = T;
 
+% Centering and scaling the data
+% ----------------------------------------------------------------------- %
+T = normalize(T);
+
 % turn into matrix
 T = T{:, :};
 V = var(T);
 
 % removing all columns with zero variance
-T(:, [1,2,7,8,9,10,11,12,13,14]) = [];
-
-% Centering and scaling the data
-% ----------------------------------------------------------------------- %
-T = normalize(T);
-
+T(:, [8,9]) = [];
 
 % Building the PCA model
 % ----------------------------------------------------------------------- %
-[t, p, R2] = nipalspca(T,3);
+[t, p, R2] = nipalspca(T,12);
 
 % Part 2 - Scores plot
 % ----------------------------------------------------------------------- %
-% TODO: there doesn't appear to be any points beyond the 99 CI ask TA
-% TODO: ask TA about matlab legend formatting
-point = 250;
 low_t = floor(length(t)/2);
 scoreplot(t(:, 1), t(:, 2));
 hold on;
@@ -46,8 +42,7 @@ hold off;
 
 % Part 3 - Loadings plot
 % ----------------------------------------------------------------------- %
-% TODO: the variable names appear to be in reverse in the plot ask TA
-colNames = string(T_copy.Properties.VariableNames(:, 3:6));
+colNames = string(T_copy.Properties.VariableNames(:, [1:7,10:14]));
 loading_plot(p(:,1),1, colNames);
 loading_plot(p(:,2),2, colNames);
 
