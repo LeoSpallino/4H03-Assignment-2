@@ -1,2 +1,5 @@
 *.asv
 A2_2022.pdf
+.DS_Store
+*.svg
+*.jpg
