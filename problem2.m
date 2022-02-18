@@ -28,7 +28,7 @@ T(:, [1,2,7,8,9,10,11,12,13,14]) = [];
 T = normalize(T);
 
 
-% Building the PCA models
+% Building the PCA model
 % ----------------------------------------------------------------------- %
 [t, p, R2] = nipalspca(T,3);
 
@@ -47,9 +47,16 @@ hold off;
 % Part 3 - Loadings plot
 % ----------------------------------------------------------------------- %
 % TODO: the variable names appear to be in reverse in the plot ask TA
-colNames = string(T_copy.Properties.VariableNames(:, [3:6]));
+colNames = string(T_copy.Properties.VariableNames(:, 3:6));
 loading_plot(p(:,1),1, colNames);
 loading_plot(p(:,2),2, colNames);
+
+% Part 4 - Scores and Loadings Vectors Plot
+% ----------------------------------------------------------------------- %
+score_loading_plot(t(:,1), t(:,2), p(:,1), p(:,2), colNames);
+
+
+
 
 
 
